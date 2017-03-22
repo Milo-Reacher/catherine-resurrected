@@ -1,0 +1,6 @@
+"catherine"
+{
+	"base"		"sandbox"
+	"title"		"Catherine"
+	"author"	"L7D"
+}

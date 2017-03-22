@@ -1,0 +1,24 @@
+﻿<KOREAN>
+
+FileIO 모듈
+<https://github.com/alexgrist/gmsv_fileio>
+
+캐서린의 업데이트 시스템을 사용하려면 필수로 설치해야 합니다.
+
+Windows 사용자는 'gmsv_fileio_win32'를 Linux 사용자는 'gmsv_fileio_linux' DLL 파일을 복사해서, 당신의 서버파일의 'garrysmod/lua/bin' 폴더 안에 설치하시고 서버를 재부팅 하십시오.
+
+(bin 폴더가 없을 경우 새로 만드십시오.)
+
+
+
+
+<ENGLISH>
+
+FileIO Module
+<https://github.com/alexgrist/gmsv_fileio>
+
+You need this module because want a Catherine Update System.
+
+Do it you are using Windows 'gmsv_fileio_win32' file or your are using Linux 'gmsv_fileio_linux' file, and paste it your server file in the 'garrysmod/lua/bin' folder, and Restart your server.
+
+(You can't found bin folder, create it)
