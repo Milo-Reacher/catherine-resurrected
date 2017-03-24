@@ -592,8 +592,8 @@ LANGUAGE.data = {
 	[ "Chat_Str_Whisper" ] = "%s whispers %s",
 	[ "Chat_Str_Console" ] = "Console",
 	[ "Chat_Str_Roll" ] = "%s has rolled %s out of 100.",
-	[ "Chat_Str_Connect" ] = "%s has joined to server.",
-	[ "Chat_Str_Disconnect" ] = "%s has disconnected to server.",
+	[ "Chat_Str_Connect" ] = "%s has joined the server.",
+	[ "Chat_Str_Disconnect" ] = "%s has disconnected the server.",
 	
 	// Question
 	[ "Question_UIStr" ] = "Question",
