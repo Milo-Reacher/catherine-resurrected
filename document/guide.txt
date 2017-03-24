@@ -1,0 +1,613 @@
+Catherine Framework
+Guide to 2015-09-02
+
+First, I would like to thank you for using the Catherine framework, which will help you get started with the basics of the Catherine framework.
+
+1: Basic knowledge of the Catherine framework
+
+The Catherine framework is a one-year Role Play (RP) framework, yet its functionality is immature, but it will become the best framework.
+To get to know the Catherine framework completely, you need to have a basic knowledge, first of all you should be aware of the differences between the framework and the schema.
+
+The framework is... The framework is a skeleton in English, that is, it is easy to say that it is in base mode. Typically, it is a framework such as Nutscript (Nut Script) or Clockwork (Clockwork).
+
+Schema... Schema can easily be said to be an extension mode that frees the framework. For example, HL2RP (Half-Life 2 RP) or Modern RP might be called Schema.
+
+The Catherine framework is basically written in the Lua script language. If you are not familiar with the Lua script, see the link below.
+
+Official Lua Document, Official Gary Mode Wiki
+
+If you use the Catherine framework and discover a bug, please complete a support ticket or contact the developer directly.
+
+Note If you are contacting the developer directly, please include your comment in the SteamProfile comment, even briefly.
+
+Create a Contact Support Ticket, Developer Steam Profiles
+2: Catherine framework and schema installation, behavior
+
+You must first download the Catherine framework and schema files.
+
+NOTE Schema files may be authored / shared by external authors
+
+Download the Catherine framework and Schema files, and unzip them.
+
+➨ Catherine Framework: Download
+➨ HL2RP (Half-Life 2 RP) Schema: Download
+
+You should now see the following folder structure.
+
+➡ Catherine-master> gamemode, framework, content, entities, document, catherine.txt, database_config.cfg, README.md
+➡ Catherine-HL2RP-master> gamemode, schema, content, entities, cat_hl2rp.txt, README.md
+
+Change the name of the folder to the name of the mode text file in the folder.
+
+Catherine-master ➡ catherine
+Catherine-HL2RP-master ➡ cat_hl2rp
+
+And paste it into 'garrysmod / gamemodes' on your source-only server, so the folder structure in 'garrysmod / gamemodes' on your source-only server looks like this:
+
+Gamemodes:
+➨ catherine
+➨ cat_hl2rp
+➨ base (default game mode)
+➨ sandbox (default game mode)
+➨ terrortown (default game mode)
+
+NOTE If you do not have a source-only server, you need to create a new one.
+
+You may also need to install the content file if the schema contains a content folder. Copy all the folders in the content folder and then install it by inserting it into the "garrysmod /" of your dedicated source server.
+
+Now that you have the files installed, set the startup option command line for your source-only server to + gamemode 'schema folder name' before running the server.
+
+Yes + gamemode cat_hl2rp
+
+NOTE Refer to the link for setting the startup options for the source-only server.
+
+WARNING Absolute Start Options Do not set the game mode setting on the command line to catherine, you must set it to Schema.
+
+The Catherine framework and Schema installation is complete.
+
+
+
+
+
+
+
+
+
+
+
+
+
+3: Database (optional)
+
+NOTE This is optional, and the Catherine framework is fully functional without database setup.
+
+If you look in the Catherine Framework mode folder, you will find the database_config.cfg file, which defines the information needed to access the database. If you open the file in Notepad or Notepad ++, you can find the following code:
+
+- Catherine Database Config
+
+Local CONFIG = {}
+
+CONFIG.DATABASE_MODULE = "sqlite" - Database module ID (sqlite, mysqloo, tmysql4)
+CONFIG.DATABASE_HOST = "127.0.0.1" - Database host IP / name for connect.
+CONFIG.DATABASE_ID = "root" - Database account ID for authentication.
+CONFIG.DATABASE_PASSWORD = "" - Database account Password for authentication.
+CONFIG.DATABASE_NAME = "" - Database table name.
+CONFIG.DATABASE_PORT = 3306 - Database Port for connect. (Number)
+
+Return CONFIG
+
+
+
+
+
+
+
+
+
+
+
+
+
+CONFIG.DATABASE_MODULE
+Set the module to use for database operation (connection).
+There are currently three modules: sqlite, mysqloo, and tmysql4. Sqlite is a built-in module in the game itself. Mysqloo and tmysql4 use an external library and require additional installation.
+Value type: string (string)
+Example: "sqlite"
+
+NOTE If you set CONFIG.DATABASE_MODULE to sqlite, the following settings are not required.
+
+CONFIG.DATABASE_HOST
+Set the host address to use for database connections, usually localhost or 127.0.0.1 if you have a MySQL server installed on your computer.
+Value type: string (string)
+Example: "127.0.0.1"
+
+CONFIG.DATABASE_ID
+Sets the database account ID to use for database connection.
+Value type: string (string)
+Example: "root"
+
+CONFIG.DATABASE_PASSWORD
+Sets the database account password to be used for database connection.
+Value type: string (string)
+Example: "12345"
+
+
+
+CONFIG.DATABASE_NAME
+Sets the table name to be used for database operation (connection).
+Value type: string (string)
+Example: "catherine"
+
+CONFIG.DATABASE_PORT
+Sets the MySQL server port to use for database connections, no change is required under normal circumstances.
+Value type: number (number)
+Example: 3306
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4: Setting value
+
+The path to the settings file for the Catherine framework and schema is:
+
+➨ Catherine framework: 'framework / config / framework_config.lua'
+➨ Schema: 'schema / sh_config.lua'
+
+NOTE The settings of the Catherine framework are overridden by the schema settings.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+➤ List of all settings in the Catherine framework
+
+This list lists all the settings of the Catherine framework.
+
+Catherine.configs.OWNER
+Catherine's super administrator is set up, and when the value of the administrator's steam ID is written in this value, the administrator automatically sets it as Super Admin when the server comes in.
+Value type: string (string)
+Example: "STEAM_0: 1: 00000000"
+
+Catherine.configs.defaultLanguage
+Catherine's default language is set, the first incoming server is set to this language by default.
+Value type: string (string)
+Example: "english" or "korean"
+
+Catherine.configs.doorCost
+Set the purchase price of the contact.
+Value type: number (number)
+Example: 50
+
+Catherine.configs.doorSellCost
+Sets the sales price of the contact.
+Value type: number (number)
+Example: 25
+
+Catherine.configs.playerDefaultRunSpeed
+Sets the player's default running speed
+Value type: number (number)
+Example: 275
+
+Catherine.configs.playerDefaultWalkSpeed
+Sets the player's default walking speed
+Value type: number (number)
+Example: 90
+
+Catherine.configs.playerDefaultJumpPower
+Sets the player's default jump
+Value type: number (number)
+Example: 120
+
+Catherine.configs.defaultCash
+Sets the funding given by default when a player first creates a character.
+Value type: number (number)
+Example: 0
+
+Catherine.configs.cashModel
+Sets the model that is visible when cash falls on the map.
+Value type: string (string)
+Example: "models / props_lab / box01a.mdl"
+
+Catherine.configs.characterMenuMusic
+Set the music in the character menu.
+Value type: string (string)
+Example: "music / hl2_song19.mp3"
+
+
+
+
+Catherine.configs.enabledCharacterMenuMusicLooping
+Sets whether the music in the character menu repeats indefinitely.
+Value type: Boolean (called)
+Example: true (enable) or false (disable)
+
+Catherine.configs.baseInventoryWeight
+Sets the default weight of the character's inventory.
+Value type: number (number)
+Example: 10
+
+Catherine.configs.characterNameMinLen
+Sets the minimum length of the character name.
+Value type: number (number)
+Example: 4
+
+Catherine.configs.characterNameMaxLen
+Sets the maximum length limit for character names.
+Value type: number (number)
+Example: 25
+
+Catherine.configs.characterDescMinLen
+Sets the minimum length of the character description.
+Value type: number (number)
+Example: 32
+
+Catherine.configs.characterDescMaxLen
+Sets the maximum length of the character description.
+Value type: number (number)
+Example: 64
+
+Catherine.configs.doorDescMaxLen
+Sets the maximum length of the statement description.
+Value type: number (number)
+Example: 30
+
+Catherine.configs.Font
+Sets Catherine's default font.
+Value type: string (string)
+Example: "Segoe UI"
+
+Catherine.configs.enableQuiz
+Enables or disables the quiz system.
+Value type: Boolean (called)
+Example: true (enable) or false (disable)
+
+Catherine.configs.alwaysRaised
+Sets the weapon the character always holds.
+Value type: table (table)
+example : { }
+
+Catherine.configs.rpTimeInterval
+Sets the number of seconds of RP time to 1 second of real time.
+Value type: number (number)
+Example: 0.2
+
+
+
+
+Catherine.configs.maxCharacters
+Sets how many characters a player can create.
+Value type: number (number)
+Example: 5
+
+Catherine.configs.defaultRPInformation
+Sets the default time and date for the RP.
+Value type: table (table)
+example : { }
+
+Catherine.configs.enable_rpTime
+Enables or disables RP time.
+Value type: Boolean (called)
+Example: true (enable) or false (disable)
+
+Catherine.configs.enable_globalBan
+Enable or disable the federated vans system.
+Value type: Boolean (called)
+Example: true (enable) or false (disable)
+
+Catherine.configs.enable_Lime
+Enables or disables the Nuclear Prevention System (Catherine Lime).
+Value type: Boolean (called)
+Example: true (enable) or false (disable)
+
+Catherine.configs.attachmentBlacklist
+Sets the black list of attachments.
+Value type: table (table)
+example : { }
+
+Catherine.configs.physgunBoneFreezeList
+The Gary Gun (Phys gun) sets the list to lock the armature when capturing an object in the list. (Class ID)
+Value type: table (table)
+example : { }
+
+Catherine.configs.limeCheckInterval
+Sets the nuclear check interval of the Nuclear Prevention System (Catherine Lime).
+Value type: number (number)
+Example: 600
+
+Catherine.configs.hintInterval
+Sets the transmission interval of RP hints.
+Value type: number (number)
+Example: 30
+
+Catherine.configs.environmentSendInterval
+Set the transmission interval of environmental data.
+Value type: number (number)
+Example: 60
+
+Catherine.configs.saveInterval
+Set the storage interval.
+Value type: number (number)
+Example: 300
+
+
+
+
+Catherine.configs.netRegistryOptimizeInterval
+Sets the optimization interval for the network registry.
+Value type: number (number)
+Example: 350
+
+Catherine.configs.voiceAllow
+Set whether to allow or disallow voices.
+Value type: Boolean (called)
+Example: true (enable) or false (disable)
+
+Catherine.configs.voice3D
+Sets whether to enable or disable the 3D voice system.
+Value type: Boolean (called)
+Example: true (enable) or false (disable)
+
+Catherine.configs.giveHand
+Set whether or not to reduce the punch when the player spawns.
+Value type: Boolean (called)
+Example: true (enable) or false (disable)
+
+Catherine.configs.giveKey
+Set whether the player will lose the key when spawning.
+Value type: Boolean (called)
+Example: true (enable) or false (disable)
+
+Catherine.configs.spawnTime
+Sets the interval at which the player dies and then resurrects.
+Value type: number (number)
+Example: 60
+
+Catherine.configs.clearMap
+Clean the map cleanly when you start the server.
+Value type: Boolean (called)
+Example: true (enable) or false (disable)
+
+Catherine.configs.doorBreach
+Shooting door knobs activates or deactivates systems in which doors are forced open.
+Value type: Boolean (called)
+Example: true (enable) or false (disable)
+
+Catherine.configs.enable_oocDelay
+After using OOC, activate the delay system.
+Value type: Boolean (called)
+Example: true (enable) or false (disable)
+
+Catherine.configs.enable_loocDelay
+After using LOOC, activate the delay system.
+Value type: Boolean (called)
+Example: true (enable) or false (disable)
+
+Catherine.configs.forceAllowOOC
+Defines a function to force OOC.
+Value type: function (function)
+example :...
+
+
+
+
+Catherine.configs.forceAllowLOOC
+Defines a function that will force LOOC.
+Value type: function (function)
+example :...
+
+Catherine.configs.oocDelay
+Set the OOC delay.
+Value type: number (number)
+Example: 60
+
+Catherine.configs.loocDelay
+LOOC Sets the delay.
+Value type: number (number)
+Example: 2
+
+Catherine.configs.limbDamageAutoRecover
+Limb Sets the interval at which damage is automatically recovered.
+Value type: number (number)
+Example: 5
+
+Catherine.configs.enable_Log
+Enables or disables the log system.
+Value type: Boolean (called)
+Example: true (enable) or false (disable)
+
+
+
+
+
+Catherine.configs.enable_Environment
+Enables or disables the environmental system.
+(Day, night, sky blue)
+Value type: Boolean (called)
+Example: true (enable) or false (disable)
+
+Catherine.configs.frameworkLogo
+Set the logo of the Catherine framework.
+Value type: string (string)
+Example: "CAT / logos / main02.png"
+
+Catherine.configs.schemaLogo
+Sets the schema for the Schema.
+Value type: string (string)
+Example: "CAT / logos / main02.png"
+
+Catherine.configs.mainColor
+Sets the default color of the Catherine framework.
+Value type: color (color)
+Example: Color (50, 50, 50)
+
+Catherine.configs.mainBarWideScale
+Sets the horizontal size of the top bar.
+Value type: number (number)
+Example: 0.2
+
+
+
+
+Catherine.configs.mainBarTallSize
+Sets the vertical size of the top bar.
+Value type: number (number)
+Example: 6
+
+Catherine.configs.maxChatboxLine
+Sets the maximum number of lines in the chat box.
+Value type: number (number)
+Example: 50
+
+Catherine.configs.enableCharacterPanelBlur
+Sets whether to reduce the Blur effect in the Character menu.
+Value type: Boolean (called)
+Example: true (enable) or false (disable)
+
+➤ Lime System Guide for Catherine Framework
+
+Lime is a built-in anti-cheat system built into the Catherine framework. The Lime system detects and blocks all cheat programs that use unusual ways to manipulate important server commands.
+
+
+
+➤ Introducing the External X System in the Catherine Framework
+
+External X is a built-in web patching system built into the Catherine framework. The patches applied to the server by the External X system are managed by the Framework Manager, and each server has the right to install or deny patches.
+
+
+
+➤ Catherine Framework Global Ban System Guide
+
+Global Ban is a built-in user blocking system built into the Catherine framework. Global Ban blocks malicious users from accessing servers that use the Catherine framework.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5: Initializing the database
+
+To uninitialize the Catherine framework or initialize the database at your own discretion, try the following:
+
+Common methods (SQLite, MySQL)
+
+With the source-only server turned on, run the 'cat_db_init' command on the console and restart the server.
+
+WARNING Try when there is no player on the server, database initialization
+It can cause unexpected serious errors.
+
+
+
+Passive Method (MySQL)
+
+If the normal method does not work, use a MySQL database management system on systems that use the MySQL database.
+
+WARNING Always attempt to shut down the server completely.
+
+
+
+Passive Method (SQLite)
+
+Systems that use an SQLite database should attempt this method if the normal method does not work.
+
+Go to the folder where the source-only server is installed.
+Locate the sv.db file inside the garrysmod folder.
+Delete the sv.db file
+
+WARNING Always attempt to shut down the server completely.
+
+Warning This method erases all data stored in the SQLite database.
+
+
+
+WARNING Deleted databases can not be recovered, please choose carefully.
+
+
+6: Authentication code
+
+To use Katharine, you need a verification code, which is to protect Katharine's content from the server owner who has unkind use and an incorrect mind.
+
+Questions about Catherine's authentication code
+Apply for Catherine Certification Code
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7: References
+
+➤ GitHub link in the Catherine framework: link
+➤ GitHub link in the Catherine HL2RP schema: Link
+➤ Developer Steam Profiles: Links
+➤ Developer GitHub Profile: Link
+
+
+The End...
